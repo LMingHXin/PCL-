@@ -4,7 +4,7 @@ from hashlib import new
 from tkinter.messagebox import askokcancel, showinfo, showwarning
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import tkinter as tk, json, os
+import tkinter as tk, json, os, pyperclip
 from tkinter import *
 
 #处理所填写的数据
@@ -81,16 +81,15 @@ def usave():
 #下面是菜单系统中的逻辑
 
 def fdnew():
-    showinfo("反馈指南", "欢迎您反馈新的功能!\n请前往:https://github.com/LMingHXin/PCL-/upload/main/issues 提交issue!\n(注意issue#1中的内容)\n网址已经在您的剪贴板了~")
+    showinfo("反馈指南", "欢迎您反馈新的功能!\n请前往:https://github.com/LMingHXin/PCL-/upload/main/issues 提交issue!\n(注意issue#2中的内容)\n网址已经在您的剪贴板了~")
     fwurl = "https://github.com/LMingHXin/PCL-/upload/main/issues"
-
+    pyperclip.copy(fwurl)
+    pyperclip.paste()
 def bug():
-    ans = askokcancel("确认", "你确定出bug了?!")
-    if ans:
-        showinfo("啊对对对", "既然出bug了,别用了就(")
-        root.quit()
-    else:
-        showinfo("反馈指南", "我懒得修,但你非要反馈的话,请前往:https://github.com/LMingHXin/PCL-/upload/main/issues 提交issue\n注意看issue#1的内容")
+        showinfo("反馈指南", "我们将会及时修好bug!\n请前往:https://github.com/LMingHXin/PCL-/upload/main/issues 提交issue\n注意看issue#2的内容\n网址已经在您的剪贴板了~")
+        fwurl = "https://github.com/LMingHXin/PCL-/upload/main/issues"
+        pyperclip.copy(fwurl)
+        pyperclip.paste()
 
 def helps():#对应帮助
     showinfo("帮助", "这是专属于PCL回声洞的提交系统\n你可以填写QQ号与图片路径两行的内容后单击保存\n下次使用时仅需输入回声洞留言内容后单击使用预设即可")
