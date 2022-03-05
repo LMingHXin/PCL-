@@ -1,9 +1,7 @@
 # PCL-小工具箱
 适用于PCL(PainCraftLauncher)启动器的小插件
 
-最新版下载：https://github.com/LMingHXin/PCL-/raw/main/Versions/0.1.2-22-3-5.zip
-
-也可以在右侧releases中下载
+请在右侧releases下载最新版本的PCLTools
 
 ---
 
