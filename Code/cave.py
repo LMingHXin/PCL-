@@ -55,31 +55,34 @@ class cave(tk.Tk):
 
     #使用预设按钮所对应逻辑
     def usave(self):
-        ipt = self.e3.get()
-        if not ipt:
-            showwarning("警告", "请先输入内容")
-        else:
-            with open(os.path.abspath("edata.json")) as dtjs:
-                jsdata = json.load(dtjs)
-            if jsdata["qq"] == "" or jsdata["file"] == "":
-                showwarning("警告", "您还没有保存过")
+        try:
+            ipt = self.e3.get()
+            if not ipt:
+                showwarning("警告", "请先输入内容")
             else:
-                #这里再写一遍好麻烦qwq
-                ipt1 = jsdata["qq"]
-                ipt2 = jsdata["file"]
-                ipt3 = self.e3.get()
-                driver = webdriver.Chrome()
-                driver.get("https://jinshuju.net/f/esXHQF")#确定网址
-                driver.implicitly_wait(10)
-                input_1 = driver.find_element_by_xpath('//*[@id="root"]/div/form/div[3]/div[1]/div[2]/div/div/div[2]/div[1]/div/span/input')
-                input_1.send_keys(ipt1)
-                input_2 =driver.find_element(By.CLASS_NAME, "field_2").find_element(By.TAG_NAME, "input")
-                input_2.send_keys(ipt2)
-                input_3 = driver.find_element_by_xpath('//*[@id="root"]/div/form/div[3]/div[1]/div[6]/div/div/div[2]/div[1]/div/span/textarea')
-                input_3.send_keys(ipt3)
-                btn =  driver.find_element_by_xpath('//*[@id="root"]/div/form/div[5]/div[1]/button')
-                btn.click()
-                driver.quit()
+                with open(os.path.abspath("edata.json")) as dtjs:
+                    jsdata = json.load(dtjs)
+                if jsdata["qq"] == "" or jsdata["file"] == "":
+                    showwarning("警告", "您还没有保存过")
+                else:
+                    #这里再写一遍好麻烦qwq
+                    ipt1 = jsdata["qq"]
+                    ipt2 = jsdata["file"]
+                    ipt3 = self.e3.get()
+                    driver = webdriver.Chrome()
+                    driver.get("https://jinshuju.net/f/esXHQF")#确定网址
+                    driver.implicitly_wait(10)
+                    input_1 = driver.find_element_by_xpath('//*[@id="root"]/div/form/div[3]/div[1]/div[2]/div/div/div[2]/div[1]/div/span/input')
+                    input_1.send_keys(ipt1)
+                    input_2 =driver.find_element(By.CLASS_NAME, "field_2").find_element(By.TAG_NAME, "input")
+                    input_2.send_keys(ipt2)
+                    input_3 = driver.find_element_by_xpath('//*[@id="root"]/div/form/div[3]/div[1]/div[6]/div/div/div[2]/div[1]/div/span/textarea')
+                    input_3.send_keys(ipt3)
+                    btn =  driver.find_element_by_xpath('//*[@id="root"]/div/form/div[5]/div[1]/button')
+                    btn.click()
+                    driver.quit()
+        except FileNotFoundError:
+            showwarning("警告", "您还没有保存过预设")
 
     #上面为GUI按钮+entry组件逻辑
     #下面是菜单系统中的逻辑
@@ -96,7 +99,7 @@ class cave(tk.Tk):
             pyperclip.paste()
 
     def helps(self):#对应帮助
-        showinfo("帮助", "这是专属于PCL回声洞的提交系统\n你可以填写QQ号与图片路径两行的内容后单击保存\n下次使用时仅需输入回声洞留言内容后单击使用预设即可")
+        showinfo("帮助", "这是专属于PCL回声洞的提交系统\n你可以填写QQ号与图片路径两行的内容后单击保存\n下次使用时仅需输入回声洞留言内容后单击使用预设即可\n如若使用预设时出现你还没有保存预设,请先使用保存按钮")
 
     def programmer(self):#对应开发人员
         showinfo("开发人员", "开发者:rminghxin\n协作人员:Ricky89555\n没错只有两个人(")
