@@ -5,7 +5,7 @@
 
 ---
 
-请您下载处于右侧Release中的latest版本中的PCLTools-xxx.exe，程序将会自动安装。
+请您下载处于右侧Release中的latest版本中的exe文件，程序将会自动安装。
 
 如若遇见无法保存的问题，请下载位于main分支的edata.json文件并将其放入解压的路径中即可使用
 
